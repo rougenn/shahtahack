@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YSL MISIS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>YSL MISIS</h1>
+    </header>
+    <div class="container">
+        <main>
+            <!-- Кнопка загрузки файла -->
+            <button class="action-button" id="upload-button">
+                <span class="icon"></span>
+                загрузить датасет
+            </button>
+            <!-- Скрытый input для загрузки файла -->
+            <input type="file" id="file-input" accept=".csv" style="display: none;">
+
+            <!-- Вторая кнопка -->
+            <button class="action-button">
+                <span class="icon"></span>
+                получить диапазоны
+            </button>
+
+            <!-- Секция для отображения информации о загруженном файле -->
+            <div id="file-info" class="file-info">
+                <p>Файл ещё не загружен.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
