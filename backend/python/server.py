@@ -11,15 +11,12 @@ app = Flask(__name__, static_folder='build', static_url_path='')
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
-# Папка для сохранения загруженных файлов
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# Разрешенные типы файлов
 ALLOWED_EXTENSIONS = {'csv'}
 
-# Функция для проверки типа файла
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -37,25 +34,24 @@ def predict_route():
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(filepath)
         
-        # Вызываем вашу функцию predict
-        result_csv = predict(filepath)
-
-        # Создаем файл для отправки
-        result_file = io.StringIO(result_csv)
-        result_file.seek(0)
+        df_result = predict(filepath)
         
-        return send_file(io.BytesIO(result_file.getvalue().encode('utf-8')),
+        df_result = df_result.round(4)
+        
+        result_csv = io.StringIO()
+        df_result.to_csv(result_csv, index=False)
+        result_csv.seek(0)
+        
+        return send_file(io.BytesIO(result_csv.getvalue().encode('utf-8')),
                          mimetype='text/csv',
                          as_attachment=True,
                          download_name='result.csv')
 
     return "Invalid file", 400
 
-# Роут для главной страницы, которая будет отдавать index.html
 @app.route('/')
 def serve_index():
     return send_from_directory('build', 'index.html')
 
-# Включаем сервер
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
