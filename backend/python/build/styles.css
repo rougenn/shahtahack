@@ -1,0 +1,152 @@
+/* Основные настройки */
+body {
+    margin: 0;
+    font-family: "Inter", Arial, sans-serif;
+    background: linear-gradient(120deg, #0d1117, #161b22); /* Ещё более приятный градиент */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 80px; /* Отступ для заголовка */
+    color: #ffffff;
+    animation: fade-in 1.5s ease-in-out; /* Анимация при загрузке страницы */
+}
+
+/* Анимация плавного появления */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Закреплённый заголовок */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(51, 51, 51, 0.9); /* Полупрозрачный фон */
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    backdrop-filter: blur(10px); /* Размытие фона */
+}
+
+.header h1 {
+    margin: 0;
+    font-family: "Times New Roman", serif;
+    font-size: 28px;
+    color: #f8f8f8; /* Белый текст */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Контейнер */
+.container {
+    width: 600px;
+    max-width: 90%;
+    background: rgba(42, 42, 42, 0.95); /* Полупрозрачный контейнер */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    padding: 40px 20px;
+    margin-top: 20px;
+    text-align: center;
+    animation: slide-in 1s ease-in-out; /* Плавное появление контейнера */
+}
+
+/* Анимация появления контейнера */
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Кнопки */
+.action-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90%;
+    margin: 15px auto;
+    padding: 12px 15px;
+    background: linear-gradient(120deg, #282c34, #3a3f4b); /* Градиент для кнопок */
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Эффект вспышки на кнопке при наведении */
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-45deg);
+    transition: 0.5s;
+    z-index: 0;
+}
+
+.action-button:hover::before {
+    left: 100%;
+}
+
+.action-button:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+.action-button span {
+    position: relative;
+    z-index: 1; /* Текст и иконка сверху эффекта */
+}
+
+/* Иконка слева */
+.icon {
+    width: 0;
+    height: 0;
+    margin-right: 12px;
+    border-style: solid;
+    border-width: 10px 8px 10px 0;
+    border-color: transparent #ffffff transparent transparent;
+    transition: border-color 0.3s ease;
+}
+
+.action-button:hover .icon {
+    border-color: transparent #ffcc00 transparent transparent; /* Ярко-жёлтый акцент */
+}
+
+/* Анимация нажатия */
+.action-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.file-info {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #cccccc; /* Серый текст */
+    background: #1e1e1e; /* Тёмный фон */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
