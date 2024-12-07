@@ -33,7 +33,11 @@ def predict_route():
         filename = secure_filename(file.filename)
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(filepath)
-        
+        print()
+        print()
+        print(filepath)
+        print()
+        print()
         df_result = predict(filepath)
         
         df_result = df_result.round(4)
