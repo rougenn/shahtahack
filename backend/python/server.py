@@ -5,7 +5,11 @@ from werkzeug.utils import secure_filename
 
 from script import predict
 
+from flask_cors import CORS
+
 app = Flask(__name__, static_folder='build', static_url_path='')
+CORS(app, resources={r"/api/*": {"origins": "*"}})
+
 
 # Папка для сохранения загруженных файлов
 UPLOAD_FOLDER = 'uploads'
