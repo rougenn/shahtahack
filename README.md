@@ -2,7 +2,7 @@
 ## Как запустить наш проект 
 1. Склонируйте репозиторий 
 ```
-git clone ("copy link to our repository")
+git clone https://github.com/rougenn/shahtahack.git
 ```
 2. В терминале IDE(VS CODE) пропишите следующую команду 
 ```
